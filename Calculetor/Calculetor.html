@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcalcuL</title>
+  
+</head>
+<body>
+  <style>
+    body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color:antiquewhite;
+  }
+   .Cbody {
+    max-width: 600px;
+    border-radius: 8px;
+    padding: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5)
+   }
+   .button-column {
+  text-align: center; /* Add this line to center the text in the button column */
+}
+
+input[type="button"] {
+  width: calc(100% - 40px);
+  margin: 4px;
+  padding: 10px;
+  width: 50px;
+  font-size: 25px;
+  background-color: #34db55;
+      color: #ffffff;
+  border-radius: 9px;
+  border: none;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+input[type="button"]:hover {
+      background-color: #2980b9;
+      color: #000000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  input[type="text"] {
+    font-size: 20px;
+    width: calc(100% - 40px);
+    padding: 25px;
+    margin: 5px;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    background-color: #ecf0f1;
+    text-align: end; 
+    color: #000000;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 20px;
+    cursor: button;
+  }
+
+
+
+
+  </style>
+  <div class="Cbody">
+    <h1>Calculate Me !!</h1>
+    <table>
+      <tr>
+        <td colspan="4"><input type="text" id="myresult"></td>
+      </tr>
+      <tr>
+        <td class="button-column"><input type="button" value="C" onclick="DeleteMe()"></td>
+        <td class="button-column"><input type="button" value="(" onclick="caluolet('(')"></td>
+        <td class="button-column"><input type="button" value=")" onclick="caluolet(')')"></td>
+        <td class="button-column"><input type="button" value=" " onclick="caluolet('')"></td>
+      </tr>
+      <tr>
+        <td class="button-column"><input type="button" value="7" onclick="caluolet('7')"></td>
+        <td class="button-column"><input type="button" value="8" onclick="caluolet('8')"></td>
+        <td class="button-column"><input type="button" value="9" onclick="caluolet('9')"></td>
+        <td class="button-column"><input type="button" value="+" onclick="caluolet('+')"></td>
+      </tr>
+      <tr>
+        <td class="button-column"><input type="button" value="4" onclick="caluolet('4')"></td>
+        <td class="button-column"><input type="button" value="5" onclick="caluolet('5')"></td>
+        <td class="button-column"><input type="button" value="6" onclick="caluolet('6')"></td>
+        <td class="button-column"><input type="button" value="-" onclick="caluolet('-')"></td>
+      </tr>
+      <tr>
+        <td class="button-column"><input type="button" value="1" onclick="caluolet('1')"></td>
+        <td class="button-column"><input type="button" value="2" onclick="caluolet('2')"></td>
+        <td class="button-column"><input type="button" value="3" onclick="caluolet('3')"></td>
+        <td class="button-column"><input type="button" value="×" onclick="caluolet('*')"></td>
+      </tr>
+      <tr>
+        <td class="button-column"><input type="button" value="0" onclick="caluolet('0')"></td>
+        <td class="button-column"><input type="button" value="." onclick="caluolet('.')"></td>
+        <td class="button-column"><input type="button" value="÷" onclick="caluolet('/')"></td>
+        <td class="button-column"><input type="button" value="=" onclick="ans()"></td>  
+      </tr>
+    </table>
+    <marquee>Crate By - Tanjil Mahmud Emtu</marquee>
+  </section>
+  </div>
+
+
+  <script>
+    function DeleteMe() {
+      document.getElementById("myresult").value = "";
+    }
+  
+    function caluolet(NewV) {
+      document.getElementById("myresult").value += NewV;
+    }
+  
+    function ans() {
+      var input = document.getElementById("myresult").value;
+  
+      try {
+        var result = evaluateExpression(input);
+        document.getElementById("myresult").value = result;
+      } catch (error) {
+        document.getElementById("myresult").value = "Math Error";
+      }
+    }
+  
+    function evaluateExpression(expression) {
+      return new Function('return ' + expression)();
+    }
+  </script>
+  
+ 
+</body>
+</html>
+
